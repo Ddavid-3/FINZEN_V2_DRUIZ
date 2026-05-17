@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "942545620059",
+    "firebase_url": "https://finzen-bab3b-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "finzen-bab3b",
+    "storage_bucket": "finzen-bab3b.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:942545620059:android:523afd3ef54e5ce544437e",
+        "android_client_info": {
+          "package_name": "com.example.finzen_v2"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCYRlFYfIAsVHzimg7zL7gm440VhofSiGo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
