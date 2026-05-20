@@ -1,5 +1,6 @@
 package com.example.finzen_v2.Grafica.configuracion
 
+import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -22,7 +23,9 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -35,6 +38,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.finzen_v2.utilidades.BaseDatosHelper
 import com.example.finzen_v2.utilidades.ConfiguracionApp
+import com.example.finzen_v2.utilidades.ExportadorPdf
 import com.example.finzen_v2.utilidades.Rutas
 import com.example.finzen_v2.viewmodels.ViewModelMovimientos
 import com.example.finzen_v2.viewmodels.ViewModelPresupuestos
@@ -50,6 +54,8 @@ fun ConfiguracionScreen(
     var nombreTemporal by remember { mutableStateOf(ConfiguracionApp.nombreUsuario) }
     var mostrarConfirmacionReinicio by remember { mutableStateOf(false) }
     val nombreValido = nombreTemporal.trim().isNotEmpty()
+    val movimientos = movimientosViewModel.movimientos.observeAsState(emptyList()).value
+    val presupuestos by presupuestosViewModel.presupuestos.collectAsState()
 
 
 
@@ -147,6 +153,30 @@ fun ConfiguracionScreen(
         }
 
         Spacer(modifier = Modifier.weight(1f))
+
+        OutlinedButton(
+            onClick = {
+                try {
+                    val ruta = ExportadorPdf.exportar(context, movimientos, presupuestos)
+                    Toast.makeText(
+                        context,
+                        "PDF guardado en $ruta",
+                        Toast.LENGTH_LONG
+                    ).show()
+                } catch (e: Exception) {
+                    Toast.makeText(
+                        context,
+                        "No se pudo exportar el PDF",
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+            },
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Text("Exportar datos a PDF")
+        }
+
+        Spacer(modifier = Modifier.height(8.dp))
 
         OutlinedButton(
             onClick = { mostrarConfirmacionReinicio = true },

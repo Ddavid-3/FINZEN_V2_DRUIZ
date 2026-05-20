@@ -12,6 +12,7 @@ import androidx.navigation.navArgument
 import androidx.lifecycle.viewmodel.compose.viewModel
 // Importación actualizada a la carpeta estándar
 import com.example.finzen_v2.ui.theme.FinZenTheme
+import com.example.finzen_v2.Grafica.chat.ChatFinanzasScreen
 import com.example.finzen_v2.Grafica.configuracion.BienvenidaScreen
 import com.example.finzen_v2.Grafica.estadisticas.EstadisticasScreen
 import com.example.finzen_v2.Grafica.configuracion.ConfiguracionScreen
@@ -57,6 +58,10 @@ class MainActivity : ComponentActivity() {
                     }
                     composable(Rutas.TRANSACCIONES) {
                         TransaccionesScreen(navController, movimientosViewModel)
+                    }
+                    // Pantalla del chat con la IA de finanzas.
+                    composable(Rutas.CHAT_FINANZAS) {
+                        ChatFinanzasScreen(navController)
                     }
                     composable(Rutas.ESTADISTICAS) {
                         EstadisticasScreen(navController, movimientosViewModel, presupuestosViewModel)

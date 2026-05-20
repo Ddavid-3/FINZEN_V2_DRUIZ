@@ -69,10 +69,11 @@ fun TransaccionesScreen(navController: NavController, viewModel: ViewModelMovimi
                 val num = cantidad.replace(",", ".").toDoubleOrNull()
                 if (num != null && categoria.isNotBlank()) {
                     viewModel.agregarMovimiento(num, categoria, descripcion, tipo)
-                    // Después de agregar, volvemos automáticamente al tablero
+                    // Después de agregar, volvemos automáticamente al tableroooooooooo
                     navController.navigate(Rutas.TABLERO) {
-                        popUpTo(Rutas.TABLERO) { inclusive = true }
-                    }
+                        popUpTo(Rutas.TABLERO) { inclusive = true } // el inclusive para q elimine la pantalla indicada en el popuptu
+                        // osea es decir eleimina tmabien el tablero anterioir
+                    }   // popupto -> Antes de navegar, elimina pantallas del historial hasta llegar a esta ruta
                 }
             },
             modifier = Modifier.fillMaxWidth()

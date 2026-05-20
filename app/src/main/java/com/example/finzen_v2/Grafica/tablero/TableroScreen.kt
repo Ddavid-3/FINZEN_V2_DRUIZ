@@ -16,7 +16,7 @@ import com.example.finzen_v2.modelos.TipoMovimiento
 import com.example.finzen_v2.utilidades.ConfiguracionApp
 import com.example.finzen_v2.utilidades.Rutas
 import com.example.finzen_v2.viewmodels.ViewModelMovimientos
-
+import androidx.compose.foundation.layout.statusBarsPadding
 @Composable
 fun TableroScreen(navController: NavController, viewModel: ViewModelMovimientos = viewModel()) {
 
@@ -61,7 +61,7 @@ fun TableroScreen(navController: NavController, viewModel: ViewModelMovimientos 
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(16.dp),
+                .padding(24.dp), // EN 24 MEJOR NO SE COCHA TANTO CON ARRIBA
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             // Saludo personalizado con el nombre de la configuracionN
@@ -121,6 +121,13 @@ fun TableroScreen(navController: NavController, viewModel: ViewModelMovimientos 
                 Text("Añadir Movimiento")
             }
             
+            Spacer(modifier = Modifier.height(8.dp))
+
+            // Boton para abrir el chat de finanzas con IA.
+            Button(onClick = { navController.navigate(Rutas.CHAT_FINANZAS) }, modifier = Modifier.fillMaxWidth()) {
+                Text("Chat IA de finanzas")
+            }
+
             Spacer(modifier = Modifier.height(8.dp))
             
             Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {

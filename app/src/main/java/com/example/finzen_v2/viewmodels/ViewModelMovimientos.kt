@@ -16,7 +16,7 @@ class ViewModelMovimientos(application: Application) : AndroidViewModel(applicat
     private val _movimientos = MutableLiveData<List<Movimiento>>()
     val movimientos: LiveData<List<Movimiento>> = _movimientos
 
-    init {
+    init { // en init imporntae
         // Escuchamos los movimientos una sola vez al iniciar el ViewModel ,IMPORTANTE Q ANTES SE ME LIOOO
         repositorio.obtenerMovimientos { lista ->
             _movimientos.value = lista
